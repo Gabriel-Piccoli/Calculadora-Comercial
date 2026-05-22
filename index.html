@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Orçamento 2026 - PDV Legal</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header-main">
+            <h1>Calculadora de Orçamento 2026</h1>
+            <p>PDV Legal - Ferramenta de Cotação</p>
+        </div>
+
+        <div class="client-input-group">
+            <label>Preencha os Dados da Proposta:</label>
+            <P></P>
+            <div class="client-inputs">
+                <input type="text" id="clientName" placeholder="Nome do Cliente" value="">
+                <input type="text" id="clientEmpresa" placeholder="Nome da Empresa" value="">
+            </div>
+            <p></p>
+            <div class="client-inputs">
+                <input type="text" id="consultantName" placeholder="Nome do Consultor" value="">
+                <input type="text" id="consultantEmail" placeholder="E-mail do Consultor" value="">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>1. Planos e Pacotes</h2>
+
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="radio" name="plano" value="300,00" data-name="Plano Plano">
+                        Plano Plano
+                    </span>
+                    <span class="price">R$ 300,00</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="radio" name="plano" value="500,00" data-name="Plano Plano Plus" checked="">
+                        Plano Plano Plus
+                    </span>
+                    <span class="price">R$ 500,00</span>
+                </label>
+            </div>
+
+            <h2>2. Módulos Avulsos</h2>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" data-name="Módulo 1">
+                        Módulo 1
+                    </span>
+                    <div class="price-wrapper">
+                        <span>R$</span>
+                        <input type="number" class="price-input" step="0.01" min="0">
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" data-name="Módulo 2">
+                        Módulo 2
+                    </span>
+
+                    <div class="price-wrapper">
+                        <span>R$</span>
+                        <input type="number" class="price-input" step="0.01" min="0">
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" data-name="Módulo 3">
+                        Módulo 3
+                    </span>
+
+                    <div class="price-wrapper">
+                        <span>R$</span>
+                        <input type="number" class="price-input" step="0.01" min="0">
+                    </div>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="00.00" data-name="Módulo 4">
+                        Módulo 4
+                    </span>
+                    <span class="price" style="color:var(--success)">Grátis</span>
+                </label>
+            </div>
+
+            <h2>3. Terminais Adicionais</h2>
+            <div class="form-group">
+                <label>
+                    <span>
+                        Pontos de Venda (PDV) Adicionais<br>
+                        <small style="color:#666; font-weight:normal;">(Pacote conforme a quantidade)</small>
+                    </span>
+                    <div style="display:flex; align-items:center; gap:5px;">
+                        <span class="price" id="pdvUnitPriceDisplay">R$ 0,00</span>
+                        <input type="number" id="qtyPdv" class="qty-input" value="0" min="0" max="10">
+                    </div>
+                </label>
+            </div>
+
+            <h2>4. Integrações e Serviços</h2>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="0.00" data-name="Integração 1">
+                        Integração 1
+                    </span>
+                    <span class="price" style="color:var(--success)">Grátis</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="0.00" data-name="Integração 2">
+                        Integração 2
+                    </span>
+                    <span class="price" style="color:var(--success)">Grátis</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="0.00" data-name="Serviço 1">
+                        Serviço 1
+                    </span>
+                    <span class="price" style="color:var(--success)">Grátis</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="999.90" data-name="Serviço 2">
+                        Serviço 2
+                    </span>
+                    <span class="price">R$ 999,90</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon unique" value="999.00"
+                            data-name="Serviço Premium (Pagamento não recorrente)">
+                        Serviço Premium
+                    </span>
+                    <span class="price">R$ 999,00</span>
+                </label>
+            </div>
+
+            <h2>5. Hardware e Automação</h2>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="800,00" data-name="Hardware 1">
+                        Hardware 1
+                    </span>
+                    <span class="price">R$ 800,00</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="800,00" data-name="Hardware 2">
+                        Hardware 2
+                    </span>
+                    <span class="price">R$ 800,00</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="800,00" data-name="Hardware 3">
+                        Hardware 3
+                    </span>
+                    <span class="price">R$ 800,00</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="800,00" data-name="Hardware 4">
+                        Hardware 4
+                    </span>
+                    <span class="price">R$ 800,00</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="800,00" data-name="Hardware 5">
+                        Hardware 5
+                    </span>
+                    <span class="price">R$ 800,00</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="800,00" data-name="Hardware 6">
+                        Hardware 6
+                    </span>
+                    <span class="price">R$ 800,00</span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <span>
+                        <input type="checkbox" class="addon" value="800,00" data-name="Hardware 7">
+                        Hardware 7
+                    </span>
+                    <span class="price">R$ 800,00</span>
+                </label>
+            </div>
+
+            <h2>6. Implantação</h2>
+            <div class="form-group">
+                <label>
+                    <span>Taxa de Ativação</span>
+                    <select id="taxaAtivacao">
+                        <option value="0.00" data-name="Implantação Gratis" selected="">Isento - Grátis</option>
+                        <option value="549.00" data-name="Implantação Plano 1">Implantação Plano 1 - R$ 549,00</option>
+                        <option value="999.00" data-name="Implantação Plano 2 Plus">Implantação Plano 2 Plus - R$ 999,00
+                        </option>
+                        <option value="1.599,00" data-name="Implantação Demais 3">Implantação Demais 3 - R$ 1.599,00
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <h2>7. Descontos</h2>
+            <!-- DESCONTO MENSAL -->
+            <div class="form-group discount-group">
+                <label>Desconto na Mensalidade</label>
+
+                <div class="discount-box">
+                    <input type="number" id="discountMonthlyValue" placeholder="0">
+
+                    <select id="discountMonthlyType">
+                        <option value="percent">% </option>
+                        <option value="value">R$</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- DESCONTO IMPLANTAÇÃO -->
+            <div class="form-group discount-group">
+                <label>Desconto na Implantação</label>
+
+                <div class="discount-box">
+                    <input type="number" id="discountSetupValue" placeholder="0">
+
+                    <select id="discountSetupType">
+                        <option value="percent">% </option>
+                        <option value="value">R$</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <h3 style="margin-top:0; color:var(--primary); text-align:center;">Resumo do Orçamento</h3>
+            <ul class="summary-list" id="summaryList">
+                <li>
+                    <span>Cloud (Base)</span>
+                    <span style="color:var(--primary); font-weight:bold;">R$&nbsp;167,00</span>
+                </li>
+                <li>
+                    <span>Implantação Isenta</span>
+                    <span style="color:#999; font-weight:bold;">Grátis</span>
+                </li>
+            </ul>
+
+            <div style="border-top: 2px solid #aaa; padding-top:10px; margin-top:10px;">
+                <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px;">
+                    <span>💳 Mensalidade:</span>
+                    <span id="displayMonthly" style="font-weight:bold; color:var(--primary)">R$&nbsp;167,70</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:14px; color:#666;">
+                    <span>⚙️ Ativação/Único:</span>
+                    <span id="displayOneTime">R$&nbsp;0,00</span>
+                </div>
+            </div>
+
+            <div class="total-display" id="totalDisplay">R$&nbsp;167,00</div>
+            <p style="text-align:center; font-size:11px; color:#888; margin-top:-10px;">
+                *Total no primeiro mês (Mensal + Ativação)
+            </p>
+
+            <button class="btn-print" onclick="generateProposal()">📄 Gerar Proposta PDF</button>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h3>SUGESTÕES OU MELHORIAS</h3>
+        <p class="texto">
+            <strong>Você pode contribuir para melhorarmos nossa calculadora de orçamento,
+                clique no botão abaixo e deixe seu feedback ou sugestão de melhoria.</strong>
+        </p>
+
+        <a href="https://workspace.google.com/intl/pt-BR/products/forms/" target="_blank">
+            <button>
+                Clique aqui e acrescente sua ideia!
+            </button>
+        </a>
+    </div>
+    <!-- MODELO DE IMPRESSÃO -->
+    <div id="proposal-print-area">
+        <div class="header-decor"></div>
+
+        <div class="page-content">
+            <div class="logo-area">
+                <img src="https://sistema.pdvlegal.com.br/assets/logo_pdv_legal_azul_2025_sem_frase-CUj0cMNb.png"
+                    alt="PDV Legal" class="logo">
+            </div>
+            <p></p>
+            <div class="proposal-header">
+
+
+                </p>
+                <h3>📌 Proposta Comercial – PDV Legal</h3>
+                <p><strong>Cliente:</strong> <span id="prop-client"></span></p>
+                <p><strong>Empresas:</strong> <span id="prop-clientEmpresa"></span></p>
+                <p><strong>Data:</strong> <span id="prop-date"></span></p>
+                <p><strong>Consultor:</strong> <span id="prop-consultant"></span> - Executivo(a) de Vendas</p>
+
+            </div>
+
+            <p style="font-size:13px; text-align:justify;">
+                Apresentamos nossa solução completa de <strong>PDV em nuvem</strong>,
+                ideal para otimizar suas vendas, controle e operação com praticidade e segurança.
+            </p>
+
+            <div class="section-title">Pacote Mensal e Serviços</div>
+            <ul class="prop-list" id="prop-monthly-list"></ul>
+            <div class="total-row">
+                Mensalidade Total: <span id="prop-total-monthly">R$ 0,00</span>
+            </div>
+            <div id="discount-monthly-box" style="font-size:12px; margin-top:5px;"></div>
+
+            <div class="box-inclusos">
+                <strong>📦 O que está incluso</strong><br>
+                <ul>
+                    <li>Liberação e ativação da licença.</li>
+                    <li>Configuração dos equipamentos.</li>
+                    <li>Cadastramento dos produtos no sistema.</li>
+                    <li id="item-treinamento">Treinamento online para você e sua equipe.</li>
+                </ul>
+            </div>
+
+            <div class="activation-summary" id="activation-box" style="display:none;">
+                <div class="section-title" style="margin-top:0;">Investimento Inicial (Ativação e Hardware)</div>
+                <ul class="prop-list" id="prop-onetime-list"></ul>
+                <div id="discount-setup-box" style="font-size:12px; margin-top:5px;"></div>
+                <div class="activation-total" style="margin-top:10px; text-align:right;">
+                    Total na Ativação: <span id="prop-total-activation">R$ 0,00</span>
+                </div>
+                <div class="monthly-repeat" style="text-align:right;">
+                    após somente os <span id="prop-repeat-val">R$ 0,00</span> mensais
+                </div>
+            </div>
+
+            <hr style="margin: 25px 0; border:0; border-top:1px solid #ddd;">
+
+            <div class="section-title">📱 Compatibilidade</div>
+            <p style="font-size:12px; line-height:1.5;">
+                Máquinas Smart POS ou qualquer equipamento Android compatível.<br>
+                Adquirentes homologadas: Stone, Getnet, Bin, Cielo, Caixa, Sicredi, Clover, Cielo, Vero e PagBank.
+            </p>
+
+            <div class="section-title">📄 Condições Comerciais</div>
+            <ul style="font-size:12px; padding-left:20px; line-height:1.6;">
+                <li>Sem fidelidade contratual.</li>
+                <li>Ativação mediante confirmação de pagamento da implantação.</li>
+                <li>Pagamento via boleto bancário ou cartão de crédito recorrente.</li>
+            </ul>
+
+            <div class="page-break"></div>
+
+            <div class="section-title">🚀 Benefícios</div>
+            <ul style="font-size:12px; padding-left:20px; line-height:1.6;">
+                <li>Controle de vendas em tempo real.</li>
+                <li>Redução de erros operacionais.</li>
+                <li>Mobilidade (use de qualquer lugar).</li>
+                <li>Fácil utilização.</li>
+            </ul>
+
+            <div class="section-title">🔧 Suporte Técnico</div>
+            <ul style="font-size:12px; padding-left:20px; line-height:1.6;">
+                <li>Segunda a Sábado: 9:30h às 21h</li>
+                <li>📞 Telefone/WhatsApp: 11 98765-4321</li>
+                <li>📧 E-mail: gmaildogabriel@gmail.com.br</li>
+            </ul>
+
+            <p style="font-size:12px; margin-top:20px; text-align:center;">
+                Agradecemos a confiança e desejamos que este seja o início de uma parceria de sucesso! 💙
+            </p>
+            <div class="social-box">
+                <p>Nos siga em nossas redes sociais e conheça mais sobre o PDV Legal:</p>
+
+                <div class="social-icons">
+                    <a href="https://instagram.com/pdvlegal_oficial" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                    </a>
+
+                    <a href="https://tiktok.com/@webautomacao" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+                    </a>
+
+                    <a href="https://youtube.com/@PDVLegal_Oficiall" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+                    </a>
+
+                    <a href="https://linkedin.com/company/pdvlegal" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+            <div class="consultant-card">
+                <div class="consultant-avatar" id="consultant-initials">CN</div>
+                <div>
+                    <strong id="card-consultant-name"></strong><br>
+                    Executivo(a) de Novas Contas<br>
+                    PDV LEGAL<br>
+                    11 98765-4321 | <span id="card-consultant-email"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            Rua XXX, Nº X – Sala X<br>
+            São Paulo/SP<br>
+            11 98765-4321
+        </div>
+        <div class="footer-decor"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
